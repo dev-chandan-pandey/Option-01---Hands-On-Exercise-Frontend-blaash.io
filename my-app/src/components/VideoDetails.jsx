@@ -383,7 +383,7 @@ const VideoDetails = () => {
                 borderRadius="md" 
                 mr="10px"
                 w={{ base: '100%', md: '50%', lg: '25%' }}
-                maxH="60px" 
+                maxH="50px" 
                 h="auto"
               />
             )}

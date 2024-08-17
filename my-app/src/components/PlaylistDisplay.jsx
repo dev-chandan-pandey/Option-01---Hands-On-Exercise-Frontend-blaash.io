@@ -215,8 +215,10 @@
 // };
 
 // export default PlaylistDisplay;
+import { FaLock } from 'react-icons/fa';
+import { Button, Icon } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Grid, Image, Text, useBreakpointValue } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchVideosByPlaylist } from '../store/videoSlice';
 
@@ -276,8 +278,19 @@ const PlaylistDisplay = () => {
             _hover={{ bg: '#4A4E7B' }}
             textAlign="center"
           >
+            <Image
+             src={playlist.Image||'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcvTU37ENZLTNsZePMsiaLEHDUY9a5u67llg&s'}
+            />
             <Text fontSize={fontSize} fontWeight="bold">{playlist.Name}</Text>
-            <Text fontSize={fontSize}>{playlist.Description}</Text>
+            <Text fontSize={fontSize}>{playlist.Description||"desc not available"}</Text>
+            <Button
+  size="sm"
+  variant="ghost"
+  colorScheme="whiteAlpha"
+  leftIcon={<Icon as={FaLock} />}
+>
+  {playlist.Post_Ids.length || 0}
+</Button>
           </Box>
         ))}
       </Grid>
