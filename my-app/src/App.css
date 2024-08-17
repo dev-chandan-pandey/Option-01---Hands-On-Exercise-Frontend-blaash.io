@@ -36,3 +36,49 @@
     transform: rotate(360deg);
   }
 }
+.left-menu {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+.video-item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.video-item img {
+  width: 100%;
+  height: auto;
+}
+
+.video-item p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.playlist {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.playlist-item {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.playlist-item img {
+  width: 100%;
+  height: auto;
+}
+
+.playlist-item p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+.app {
+  display: flex;
+}
+body{
+  background-color:"#2A2D3E" ;
+}
