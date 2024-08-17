@@ -306,11 +306,12 @@ import React from 'react';
 // export default VideoDetails;
 
 import  { useState } from 'react';
-import { Box, VStack, Text, Button, Image, Flex, IconButton, HStack } from '@chakra-ui/react';
+import { Box, VStack, Text, Button, Image, Flex, IconButton, HStack, useBreakpointValue } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 
 const VideoDetails = () => {
+  const fontSize = useBreakpointValue({ base: 'md', md: 'lg', lg: 'xl' });
   const videos = useSelector((state) => state.videos.data);
   const status = useSelector((state) => state.videos.status);
   const [currentPage, setCurrentPage] = useState(1);
@@ -354,8 +355,14 @@ const VideoDetails = () => {
       color="white" 
       display="flex" 
       flexDirection="column"
+      fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+      textAlign={{ base: 'center', md: 'left' }}
     >
-      <Button colorScheme="blue" mb="10px" w="100%">
+      <Button colorScheme="blue" mb="10px" w="100%"
+      size={{ base: 'sm', md: 'md', lg: 'lg' }}
+      display={{ base: 'none', md: 'inline-flex' }}
+      fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+      >
         Generate Code
       </Button>
 
@@ -367,25 +374,27 @@ const VideoDetails = () => {
             bg="#3B3E5B"
             borderRadius="md"
             display="flex"
-            alignItems="center"
+            // alignItems="center"
           >
             {video.Thumbnail_URL && (
               <Image 
                 src={video.Thumbnail_URL} 
-                maxH="60px" 
                 alt="Video Thumbnail" 
                 borderRadius="md" 
                 mr="10px"
+                w={{ base: '100%', md: '50%', lg: '25%' }}
+                maxH="60px" 
+                h="auto"
               />
             )}
             <VStack align="flex-start" spacing="2px">
-              <Text fontSize="md" fontWeight="bold">
+              <Text fontSize={fontSize} fontWeight="bold">
                 {video.Thumbnail_Title}
               </Text>
-              <Text fontSize="sm">
+              <Text fontSize={fontSize}>
                 Products Attached: {video.AssociatedProductList ? video.AssociatedProductList.length : "0"}
               </Text>
-              <Text fontSize="xs">
+              <Text fontSize={fontSize}>
                 Created On: {new Date(video.CreatedOn).toLocaleDateString()}
               </Text>
             </VStack>
@@ -411,7 +420,11 @@ const VideoDetails = () => {
         />
       </Flex>
 
-      <Button colorScheme="blue" mt="10px" w="100%">
+      <Button colorScheme="blue" mt="10px" w="100%" 
+      size={{ base: 'sm', md: 'md', lg: 'lg' }}
+     display={{ base: 'none', md: 'inline-flex' }}
+     fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+     >
         Update Playlist
       </Button>
     </Box>

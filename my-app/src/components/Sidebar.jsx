@@ -669,6 +669,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { FaHome, FaVideo, FaListAlt, FaCalendarAlt } from 'react-icons/fa';
@@ -677,7 +678,7 @@ import { fetchPlaylists } from '../store/playlistSlice';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-
+  const fontSize = useBreakpointValue({ base: 'md', md: 'lg', lg: 'xl' });
   // State to track active tab, "playlistManager" by default
   const [activeTab, setActiveTab] = useState('playlistManager');
 
@@ -701,7 +702,8 @@ const Sidebar = () => {
       color="white"
       p="20px"
       boxShadow="2xl"
-      overflow={"auto"}
+      overflow={"scroll"}
+      fontSize={fontSize}
     >
       <Flex alignItems="center" justifyContent="center" mb="30px">
         <Text fontSize="2xl" fontWeight="bold">Bloash</Text>
@@ -710,6 +712,7 @@ const Sidebar = () => {
         <MenuItemButton
           icon={<FaHome />}
           label="Revenue"
+          
           isActive={activeTab === 'revenue'}
           onClick={() => setActiveTab('revenue')}
         />
@@ -726,15 +729,15 @@ const Sidebar = () => {
           >
             <Flex alignItems="center">
               <FaVideo />
-              <Text ml="10px">Shoppable Video</Text>
+              <Text  ml="10px">Shoppable Video</Text>
             </Flex>
             <ChevronDownIcon />
           </MenuButton>
           <MenuList bg="#2A2D3E" border="none" mt="0" color="white">
-            <MenuItem _hover={{ bg: '#3B3E5B' }} _focus={{ bg: '#3B3E5B' }} p="10px">
+            <MenuItem   _hover={{ bg: '#3B3E5B' }} _focus={{ bg: '#3B3E5B' }} p="10px">
               Option 1
             </MenuItem>
-            <MenuItem _hover={{ bg: '#3B3E5B' }} _focus={{ bg: '#3B3E5B' }} p="10px">
+            <MenuItem   _hover={{ bg: '#3B3E5B' }} _focus={{ bg: '#3B3E5B' }} p="10px">
               Option 2
             </MenuItem>
           </MenuList>
@@ -742,12 +745,14 @@ const Sidebar = () => {
         <MenuItemButton
           icon={<FaListAlt />}
           label="Story"
+         
           isActive={activeTab === 'story'}
           onClick={() => setActiveTab('story')}
         />
         <MenuItemButton
           icon={<FaVideo />}
           label="Live Commerce"
+          
           isActive={activeTab === 'liveCommerce'}
           onClick={() => setActiveTab('liveCommerce')}
         />
@@ -766,12 +771,12 @@ const Sidebar = () => {
           >
             <Flex alignItems="center">
               <FaListAlt />
-              <Text ml="10px">Playlist Manager</Text>
+              <Text  ml="10px">Playlist Manager</Text>
             </Flex>
             <ChevronDownIcon />
           </MenuButton>
           <MenuList bg="#2A2D3E" border="none" mt="0" color="white">
-            <MenuItem _hover={{ bg: '#3B3E5B' }} _focus={{ bg: '#3B3E5B' }} p="10px">
+            <MenuItem   _hover={{ bg: '#3B3E5B' }} _focus={{ bg: '#3B3E5B' }} p="10px">
               Product Playlist
             </MenuItem>
           </MenuList>

@@ -216,11 +216,12 @@
 
 // export default PlaylistDisplay;
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Text } from '@chakra-ui/react';
+import { Box, Grid, Text, useBreakpointValue } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchVideosByPlaylist } from '../store/videoSlice';
 
 const PlaylistDisplay = () => {
+  const fontSize = useBreakpointValue({ base: 'md', md: 'lg', lg: 'xl' });
   const playlists = useSelector((state) => state.playlists.data);
   const status = useSelector((state) => state.playlists.status);
   const dispatch = useDispatch();
@@ -261,8 +262,9 @@ const PlaylistDisplay = () => {
       color="white"
       overflowY="auto"
     >
-      <Text fontSize="xl" mb="20px">Product Playlists</Text>
-      <Grid templateColumns="repeat(3, 1fr)" gap="20px">
+      <Text fontSize={fontSize} mb="20px">Product Playlists</Text>
+      <Grid  templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
+  gap={6}>
         {playlists.map((playlist) => (
           <Box
             key={playlist.PlayListId}
@@ -274,8 +276,8 @@ const PlaylistDisplay = () => {
             _hover={{ bg: '#4A4E7B' }}
             textAlign="center"
           >
-            <Text fontWeight="bold">{playlist.Name}</Text>
-            <Text fontSize="sm">{playlist.Description}</Text>
+            <Text fontSize={fontSize} fontWeight="bold">{playlist.Name}</Text>
+            <Text fontSize={fontSize}>{playlist.Description}</Text>
           </Box>
         ))}
       </Grid>

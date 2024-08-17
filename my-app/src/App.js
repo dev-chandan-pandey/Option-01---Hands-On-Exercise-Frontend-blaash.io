@@ -44,7 +44,12 @@ import VideoDetails from './components/VideoDetails';
 
 function App() {
   return (
-    <Box h="100vh" bg="#1A202C">
+    <Box 
+    h="100vh"
+     bg="#1A202C"
+     templateColumns={{ base: '1fr', md: '1fr 3fr' }}
+     gap={4}
+     >
       <Flex h="100%">
         <Box w="20%" h="100%">
           <Sidebar />
